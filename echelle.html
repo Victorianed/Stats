@@ -19,6 +19,7 @@
         urlData = "https://raw.githubusercontent.com/Victorianed/echelles/main/data_musee_france.csv",
         width = 600, height=100, widthLibTxt=100, svg,
         //pVal='cpx',pLib='dim',pFreq='nbCpx',
+        //pVal='identifiant_museofile',pLib='region_administrative',pFreq='geolocalisation',
         pVal='identifiant_museofile',pLib='region_administrative',pFreq='geolocalisation',
         
         interpolates = false;
@@ -40,7 +41,11 @@
 
     function setData(rs){
         data = Array.from(d3.group(rs, d => d[pLib])).map(d=>{
-                    let extX = d3.extent(d[1], d=>d[pVal]),
+                    let groupDep = d3.group(d[1], d => d['departement']),
+                    nbMusee = d[1].lenght,
+                    nbDep = groupDep.lenght,
+                    moyMuseDep = nbMusee/nbDep,
+                    extX = d3.extent(d[1], d=>d[pVal]),
                         extY = d3.extent(d[1], d=>d[pFreq]),
                         o = {'vals':d[1],
                         'extX':[1,extX[1]],
