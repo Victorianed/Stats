@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+        urlData = "https://raw.githubusercontent.com/Victorianed/echelles/main/data_musee_france.csv",
+        width = 600, height=100, widthLibTxt=100, svg,
+        valx='identifiant_museofile',valDim='region_administrative',valY='geolocalisation',
+
+     <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,9 +20,10 @@
 
     let data, 
         //urlData = "http://localhost/samszo/HDR/docs/assets/data/complexityFrequency.json",
-        urlData = "https://raw.githubusercontent.com/Victorianed/echelles/main/data_musee_france.csv",
+               urlData = "https://raw.githubusercontent.com/Victorianed/echelles/main/data_musee_france.csv",
         width = 600, height=100, widthLibTxt=100, svg,
-        pVal='identifiant_museofile',pLib='region_administrative',pFreq='geolocalisation',
+        valx='identifiant_museofile',valDim='region_administrative',valY='geolocalisation',
+
         bandY,
         interpolates = false;
         /*{
@@ -96,6 +101,3 @@
 
 </script>
 </html>
-
-
-
