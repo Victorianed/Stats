@@ -1,4 +1,7 @@
-     <!DOCTYPE html>
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,12 +18,10 @@
     import {posiColor} from './modules/posiColor.js';
 
     let data, 
-        //urlData = "http://localhost/samszo/HDR/docs/assets/data/complexityFrequency.json",
-               urlData = "https://raw.githubusercontent.com/Victorianed/echelles/main/data_musee_france.csv",
-        width = 600, height=100, widthLibTxt=100, svg,
-        valX='ref_deps',valDim='region_administrative',valY='geolocalisation',
-
-        bandY,
+        urlData = "data_musee_france.csv",
+        width = 600, height=600, widthLibTxt=120, svg,  
+          valX='ref_deps',valDim='region_administrative',valY='geolocalisation',
+          bandY,
         interpolates = false;
         /*{
                 'Existence':d3.interpolateViridis,
@@ -40,7 +41,7 @@
     })
 
     function setData(rs){
-        data = Array.from(d3.group(rs, d => d[valDim]));
+        data = Array.from(d3.group(rs, d => d[valGroupe]));
         //création de l'échelle par bandes
         //cf. https://observablehq.com/@d3/d3-scaleband
         bandY = d3.scaleBand(data.map(d=>d[0]), [0, height]).paddingInner(0.2).paddingOuter(0.2);
@@ -56,7 +57,7 @@
                         'scX':d3.scaleLinear().domain(extX).range([widthLibTxt, width-widthLibTxt]),
                         'scY':d3.scaleLinear().domain(extY).range([0, bandY.bandwidth()])
                         };
-                        o[valDim]=d[0];
+                        o[valGroupe]=d[0];
                     return o;
                 });
         return data;
@@ -81,9 +82,9 @@
                 .attr("style", "max-width: 100%; height: auto;")
                 .style("font", "14px sans-serif"),
             dim = svg.selectAll('g').data(data).enter().append("g")
-                .attr("transform",(d,i)=>`translate(0,${bandY(d[valDim])})`);
+                .attr("transform",(d,i)=>`translate(0,${bandY(d[valGroupe])})`);
             dim.append("text").text(d=>{
-                return d[valDim]
+                return d[valGroupe]
             })
             dim.append("g").attr("transform", (d,i)=>`translate(widthLibTxt,0)`).attr('id',(d,i)=>'axisX'+i)
                 .each((d,i)=>{
