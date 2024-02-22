@@ -28,7 +28,7 @@
     let data, 
         //urlData = "http://localhost/samszo/HDR/docs/assets/data/complexityFrequency.json",
         urlData = "data_musee_france.csv",
-        width = 600, height=600, widthLibTxt=120, svg,  
+        width = 600, height=600, widthLibTxt=200, svg,  
         valX='latitude',valGroupe='region_administrative',valY='longitude', valLibCercle = 'geolocalisation',
         bandY,
         interpolates = false,
@@ -54,7 +54,7 @@
         data = Array.from(d3.group(rs, d => d[valGroupe]));
         //création de l'échelle par bandes
         //cf. https://observablehq.com/@d3/d3-scaleband
-        bandY = d3.scaleBand(data.map(d=>d[0]), [0, height]).paddingInner(0.2).paddingOuter(0.2);
+        bandY = d3.scaleBand(data.map(d=>d[0]), [0, height]).paddingInner(0.5).paddingOuter(0.5);
         data = data.map(d=>{
                     let extX = d3.extent(d[1], d=>d[valX]),
                         extY = d3.extent(d[1], d=>d[valY]),
