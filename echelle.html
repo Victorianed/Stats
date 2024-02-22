@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,10 +25,11 @@
 <script type="module">
     import {posiColor} from './modules/posiColor.js';
 
-    let data,
+    let data, 
+        //urlData = "http://localhost/samszo/HDR/docs/assets/data/complexityFrequency.json",
         urlData = "data_musee_france.csv",
         width = 600, height=600, widthLibTxt=120, svg,  
-        valX='latitude',valgroup='region_administrative',valY='longitude', valLibCercle = 'geolocalisation',
+        valX='latitude',valGroupe='region_administrative',valY='longitude', valLibCercle = 'geolocalisation',
         bandY,
         interpolates = false,
         toolTip = d3.select("#toolTip");
